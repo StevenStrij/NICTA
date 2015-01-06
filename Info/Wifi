@@ -1,0 +1,18 @@
+Wireless
+Within NICTA there are a number of wireless networks available.
+
+nicta_wireless
+Open network, firewalled from almost everything. You get access to the NICTA VPN, and ssh access to anywhere, and that's about it.
+
+nicta_visitor
+Open network, using Web-based authentication. Password changes regularly, see Visitor Wireless. Firewalled, but generally useful (ssh and web are open). Subscribe to ertos.nicta-wireless-notify (mlalias on duvel) for automated email notifications of password changes.
+
+nicta_secure
+WPA2/Enterprise, use NICTA login and password to gain access. Full access to NICTA network.
+
+KEG network.
+We run a wireless network on our floor. There is a repeater on level 4, but it's not that reliable.
+To connect, use:
+ESSID: keg
+WPA2 Personal key: 133714cafe
+
