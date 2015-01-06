@@ -7,6 +7,7 @@ unsigned long lastLCDUpdate = 0;
 unsigned long lastLoop = 0;
 
 int velocity = 0;
+int cycle = 0;
 
 void setup() {
   Serial.begin(57600);
@@ -15,7 +16,9 @@ void setup() {
   delay(100);
   Serial.write(132);
   lcd.begin(16,2);
-  lcd.print("ayy lmao");
+  
+  char song[] = {140,15,1,84,38};
+  sendBuffer(song,sizeof(song));
   
   pinMode(14,INPUT);//brakes
   pinMode(15,INPUT);//throttle
@@ -58,7 +61,7 @@ void loop() {
   }
   
   if(velocity > 500) {velocity = 500;}
-  if(velocity < 0) {velocity = 0;}
+  if(velocity < -500) {velocity = -500;}
   
   char squ[] = {137, 0x1, 0x2C, 0x7F, 0xFF};//drive command.
   squ[1] = highByte(velocity);
@@ -74,5 +77,12 @@ void loop() {
   lcd.print(velocity);
   lcd.print(" mm/s");
   
+  if(velocity < 0 && cycle % 6 == 0)
+  {
+    Serial.write(141);
+    Serial.write(15);
+  }
+  
+  cycle++;
   delay(200);//200ms;
 }
