@@ -83,7 +83,7 @@ void loop() {
      perRot = 1.00f - perRot; 
    }
    
-   if (deg == 0) {
+   if (deg == 1023) {
       perRot = -0.01;
    }
    
